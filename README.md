@@ -100,7 +100,7 @@ With this, you have the DynamoDb table in where you can store the records from t
 
 ---
 
-## **CONFGIURE THE SES to SEND THE EMAILS**
+## **CONFIGURE THE SES TO SEND THE EMAILS**
 
 For this step, you need to create and Indetity, select **Email address** for the type and put you email address.
 
