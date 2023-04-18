@@ -35,6 +35,7 @@ The steps followed were the next:
 2. Create a local Golang CLI app with two flags:
     1. **-f filename** To store from the terminal the CSV filename to upload
     2. **-b bucket** The bucket name in where to store the CSV file
+    3. **-r aws-region** The AWS region you want to work with (deafult "us-east-1")
 3. Create an IAM Role with basic Lambda permissions
 4. Create a Lambda function and attach to S3 as a trigger for each new file uploaded
 5. Update the IAM Role to grant S3 read permissions on each new object created to process them with the Lambda function
@@ -61,13 +62,13 @@ With that you can install all the dependent pakcages for the local Golang CLI ap
 
 After you have all the necessary dependencies, you can run the Golang CLI app with the next command:
 
-> go run main.go -f \<filename_to_upload\> -b \<bucket_name\>
+> go run main.go -f \<filename_to_upload\> -b \<bucket_name\> [-r \<aws-region\>]
 
 If you want to create the binary instead running the app directly, you have to execute the following commands
 
 > go build -o <binary_name_you_want> .
 >
-> ./<binary_name_you_want> -f \<filename_to_upload\> -b \<bucket_name\>
+> ./<binary_name_you_want> -f \<filename_to_upload\> -b \<bucket_name\> [-r \<aws-region\>]
 
 If after applied the before command, you got and error related about credentials, you have to install and configure the [AWS CLI](https://aws.amazon.com/cli/) tool.
 
