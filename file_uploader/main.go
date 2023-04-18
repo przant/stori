@@ -16,11 +16,12 @@ import (
 var (
 	bucket   string
 	filename string
+	region   string
 )
 
 func init() {
 	flag.Usage = func() {
-		fmt.Printf("Usage: %s -f <filename> -b <bucket_name>\n\n", os.Args[0])
+		fmt.Printf("Usage: %s -f <filename> -b <bucket_name> [-r aws-region]\n\n", os.Args[0])
 		flag.PrintDefaults()
 	}
 }
@@ -28,6 +29,7 @@ func init() {
 func main() {
 	flag.StringVar(&bucket, "b", "", "S3 bucket name in where you want to upload the file")
 	flag.StringVar(&filename, "f", "", "File to upload in the bucket given for the flag -b")
+	flag.StringVar(&region, "r", "us-east-1", "AWS Region in where you created your AWS Services to work with")
 
 	flag.Parse()
 
@@ -45,7 +47,7 @@ func main() {
 
 	sess, err := session.NewSession(
 		&aws.Config{
-			Region: aws.String("us-east-1"),
+			Region: aws.String(region),
 		},
 	)
 	if err != nil {
