@@ -38,7 +38,7 @@ def lambda_handler(event, context):
         summary['AVG_DEBIT_AMOUNT'] = summary['DEBIT_AMOUNT'] / \
             summary['DEBIT_TXNS']
         summary['AVG_CREDIT_AMOUNT'] = summary['CREDIT_AMOUNT'] / \
-            summary['DEBIT_TXNS']
+            summary['CREDIT_TXNS']
 
         send_email(summary)
     except Exception as e:
